@@ -1,9 +1,10 @@
 node {
   stage ('SCM Checkout'){
-    git 'https://github.com/warriorachu/my-app'  
+   git 'https://github.com/warriorachu/my-app'
      }
   stage ('Compile-Package'){
-    sh 'mvn package'
+    def mvnHome = tool name: 'maven-3', type: 'maven'
+    sh "${mvnHome}/bin/mvn package"
   }
 
 }
